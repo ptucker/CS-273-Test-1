@@ -32,6 +32,7 @@ namespace Exam1 // NAMESPACE
 		Vehicle(string color) {
 			_color = color;
 		}
+		//PT -- you don't need to add constructors for Vehicle. What I have is sufficient. -2
 		Vehicle() {};
 		Vehicle(int topspeed) { _topspeed = topspeed; }
 		string getColor() { return _color; }
@@ -45,6 +46,15 @@ namespace Exam1 // NAMESPACE
 	// the class implementation into a cpp file.
 	class RaceCar :public Vehicle {
 	public:
+		//PT -- this doesn't compile.
+		//The constructor I had in mind is:
+		/*
+		RaceCar(string color) : Vehicle(color) {
+			_topspeed = 250;
+			for (int i=0; i<4; i++) wheels.push_back(305);
+		}
+		*/
+		//PT: -5
 		RaceCar(int topspeed = 250) : Vehicle(_topspeed) {};
 		RaceCar(string color) : Vehicle(_color) {};
 		RaceCar(int rad = 381) : Vehicle(wheels.push_back(rad));
@@ -57,6 +67,8 @@ namespace Exam1 // NAMESPACE
 
 		//Top speed: 250mph
 		//Wheel radius: 305mm
+		//PT -- you've already defined this on line 59.
+		//PT: -5
 		RaceCar(string color)
 		{
 			_color = color;
@@ -65,6 +77,7 @@ namespace Exam1 // NAMESPACE
 
 	class Sedan :public Vehicle {
 	public:
+		//PT: -5
 		Sedan(int topspeed = 95) : Vehicle(_topspeed) {};
 		Sedan(string color) : Vehicle(_color) {};
 		Sedan(int rad = 381) : Vehicle(wheels.push_back(rad));
@@ -79,6 +92,7 @@ namespace Exam1 // NAMESPACE
 			_color = color;
 			number_of_seats = seats;
 		}
+		//PT: -5
 		Sedan(string color)
 		{
 			_color = color;
@@ -90,6 +104,7 @@ namespace Exam1 // NAMESPACE
 
 	class Pickup : public Vehicle {
 	public:
+		//PT: -5
 		Pickup(int topspeed = 85) : Vehicle(_topspeed) {};
 		Pickup(string color) : Vehicle(_color) {};
 		Pickup(int rad = 432) : Vehicle(wheels.push_back(rad));
@@ -98,6 +113,7 @@ namespace Exam1 // NAMESPACE
 			cout << "I am a " + _color + " pickup truck that has a topspeed of 85 mph.\n";
 		}
 		Pickup() {};
+		//PT: -5
 		Pickup(string color, int capacity)
 		{
 			_color = color;
@@ -124,6 +140,8 @@ int main()
 	Exam1::Sedan sedan1("blue", 6);
 	Exam1::Pickup pickup1("green", 3);
 
+	//PT -- OK, but the { }'s will cause a compiler error
+	//PT -- -5
 	Garage[0] = { &racecar1 };
 	Garage[1] = { &sedan1 };
 	Garage[2] = { &pickup1 };
